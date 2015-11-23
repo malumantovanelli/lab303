@@ -1,7 +1,7 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
-Converte_Excel_Txt/DadosdoLabview
+Converte_Excel_Txt/DadosdoLabview/
 
 # C extensions
 *.so
