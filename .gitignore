@@ -7,7 +7,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-Converte_Excel_Txt/DadosdoLabview
+Converte_Excel_Txt/DadosdoLabview/
 env/
 build/
 develop-eggs/
