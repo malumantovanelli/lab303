@@ -1,13 +1,13 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
-Converte_Excel_Txt/DadosdoLabview/
 
 # C extensions
 *.so
 
 # Distribution / packaging
 .Python
+Converte_Excel_Txt/DadosdoLabview
 env/
 build/
 develop-eggs/
