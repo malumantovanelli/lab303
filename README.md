@@ -13,7 +13,17 @@ Após conversar com alguns alunos da Engenharia de Controle e Automação, foram
 
 A planta do laborátorio é demonstrada na imagem abaixo.
 
-![Planta Lab 303](https://github.com/LEDS/Lab303/blob/master/PlantaSupervisorio.jpg "Planta do Lab 303")
+![Planta Lab 303](https://github.com/LEDS/Lab303/blob/master/Imagens/PlantaSupervisorio.jpg "Planta do Lab 303")
+
+##Etapas do Desenvolvimento da Solução
+
+###Entrevistas
+
+###Levantamento de Requisitos
+
+###Estórias de Usuário
+
+###Project Model Canvas
 
 ## Soluções Propostas
 Após realizadas diversas etapas de levantamento de requisitos, estabelecimento de casos de usuário, análises de dados, reuniões de equipe, entre outros; chegamos a uma solução que torna o processo de configuração e utilização da planta menos custoso tanto para os alunos quanto para os professores. Para isso foi escolhido criar um desenho padrão da planta, que pode ser acessado e modificado posteriormente pelos usuários, utilizando o software Labview, dado que o Ifes possui a licença para este software. Além disso, foi criada uma função no MatLab que permite a importação de arquivos .xls, exportados do LabView para formato Excel, para o MatLab, possibilitando posterior processamento de dados neste software. Essa solução será melhor explicada nas próximas sessões.
