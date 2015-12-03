@@ -16,18 +16,22 @@ A planta do laborátorio é demonstrada na imagem abaixo.
 ![Planta Lab 303](https://github.com/LEDS/Lab303/blob/master/Imagens/PlantaSupervisorio.jpg "Planta do Lab 303")
 
 ##Etapas do Desenvolvimento da Solução
-Após identificado o problema era necessário definir quais eram as principais requisições e o que os clientes esperavam daquele produto ou serviço. Sendo assim, foram aplicados algumas técnicas para levantamento de mais informações que pudessem guiar a equipe sobre qual era exatamente o problema e de que maneira poderia ser solucionado. Estas etapas serão melhor abordadas separadamente nas próximas sessões.
+Após identificado o problema era necessário definir quais eram as principais requisições e o que os clientes esperavam daquele produto ou serviço. Sendo assim, foram aplicados algumas técnicas para levantamento de mais informações que pudessem guiar a equipe sobre qual era exatamente o problema e de que maneira poderia ser solucionado. Para isso foram aplicadas algumas técnicas de levantamento de requisitos.
 
-###Entrevistas
+###Processo de Levantamento de Requisitos
+Uma das etapas da engenharia de requisitos é a elicitação, fase complexa da definição de requisitos e de todo processo de desenvolvimento de software, uma vez que é base para todas as etapas posteriores (BELGAMO; MARTINS, 2000). Elicitar requisitos requer um processo interativo que deve acontecer de forma colaborativa, envolvendo analistas, usuários e aplicação de técnicas (FREITAS; BORGES; ARAÚJO, 2007). No primeiro contato do analista com o cliente, dificilmente se extrai todas as informações relevantes para a
+implementação do sistema, daí a importância das técnicas que auxiliam no levantamento desses dados válidos.
+
+Existem técnicas que buscam auxiliar os analistas e os usuários na identificação dos requisitos do sistema, contudo, a complexidade dessa etapa de elicitação se deve, não apenas a fatores técnicos, mas também humanos. (BARBOSA et al., 2009) Este é um momento em que o analista deve atentar-se ao escolher a técnica que irá auxiliá-lo, pois este fator é uma das etapas do projeto mais importante. Dada a natureza do nosso universo as técnicas escolhidas para esse levantamento de requisitos foram: Entrevistas, Brainstorming, ...
+
+####Entrevistas
 
 
-###Brainstorming
+####Brainstorming
+Em sessões de Brainstorming, um grupo de pessoas é reunido, um cenário simulado e um assunto discutido para atrair os requisitos. As pessoas participantes devem sentir-se confortáveis para discuti-lo sem se intimidar. Nenhuma ideia é descartada, pois todas são boas
+ideias (LAUESEN, 2002).
 
-
-###Levantamento de Requisitos
-
-
-###Estórias de Usuário
+####Estórias de Usuário
 
 
 ###Project Model Canvas
