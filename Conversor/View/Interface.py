@@ -65,7 +65,7 @@ class AplicativoConversor(QtGui.QMainWindow):
         self.LBImagem = QtGui.QLabel()
         self.LBImagem.setPixmap(QtGui.QPixmap(("View\\Imagens\\Title.png")))
         self.LBImagem.setAlignment(QtCore.Qt.AlignCenter)
-        self.LayoutImagem =QtGui.QVBoxLayout(self.centralWidget)
+        self.LayoutImagem = QtGui.QVBoxLayout()
         self.LayoutImagem.addWidget(self.LBImagem)
 
     def layoutArqOri(self):
@@ -160,12 +160,14 @@ class AplicativoConversor(QtGui.QMainWindow):
     def start_conversor(self):
         if self.LEditArqOrig.text() != '' and self.LEditArqDes.text() != '':
             self.BtnConverter.setEnabled(False)
-            self.CxTexto.insertPlainText(strftime('[%H:%M:%S]')+ " Convertendo arquivo...\n")
+            self.CxTexto.insertPlainText(strftime('[%H:%M:%S]') + " Convertendo arquivo...\n")
             self.CxTexto.moveCursor(QtGui.QTextCursor.End)
             self.dadosArquivo = []
-            self.th = ThConversor(self.dadosArquivo, self.nome_arquivoOrigem)
+            self.controlador = [0, 0]
+            self.th = ThConversor(self.dadosArquivo, self.nome_arquivoOrigem, self.controlador)
             self.th.start()
             self.creat_progress_bar()
+            self.pbar.setValue(self.step)
             self.doAction()
         else:
             reply = QtGui.QMessageBox.critical(self, 'Aviso', "Insira arquivos válidos", QtGui.QMessageBox.Ok)
@@ -173,12 +175,14 @@ class AplicativoConversor(QtGui.QMainWindow):
     def timerEvent(self, e):
         if self.step >= 100:
             self.timer.stop()
-            self.CxTexto.insertPlainText(strftime('[%H:%M:%S]')+ " Conversão concluida com sucesso...\n")
-            self.CxTexto.insertPlainText(strftime('[%H:%M:%S]')+ " Salvando arquivo...\n")
-            SalvaArquivo(self.nome_arquivoDestino, self.dadosArquivo, self)
+            self.label = QtGui.QLabel(strftime('[%H:%M:%S]'))
+            self.CxTexto.insertPlainText(strftime('[%H:%M:%S]') + " Conversão concluida com sucesso...\n")
+            self.CxTexto.insertPlainText(strftime('[%H:%M:%S]') + " Salvando arquivo...\n")
+            SalvaArquivo(self.nome_arquivoDestino, self.dadosArquivo, self.CxTexto)
+            return
 
         if self.dadosArquivo != []:
-            if (len(self.dadosArquivo)-1) <= self.dadosArquivo[0]:
+            if self.controlador[0] <= (self.dadosArquivo[0] * self.controlador[1]):
                  self.step = ((len(self.dadosArquivo)-1)*100)//self.dadosArquivo[0]
                  self.pbar.setValue(self.step)
             self.inicio = self.inicio + 0.1
