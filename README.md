@@ -31,11 +31,13 @@ Existem técnicas que buscam auxiliar os analistas e os usuários na identifica�
 Em sessões de Brainstorming, um grupo de pessoas é reunido, um cenário simulado e um assunto discutido para atrair os requisitos. As pessoas participantes devem sentir-se confortáveis para discuti-lo sem se intimidar. Nenhuma ideia é descartada, pois todas são boas
 ideias (LAUESEN, 2002).
 
-####Estórias de Usuário
+####Design Centrado ao Ser Humano (HCD)
 
 
 ###Project Model Canvas
+Segundo o [site] (http://www.projectmodelcanvas.com/) do Project Model Canvas, o Project Model Canvas é uma metodologia robusta de gerenciamento de projetos, sem o preenchimento de inúmeros documentos e sem burocracia. É ideal para ambientes que querem aprimorar sua capacidade de planejamento mas que se caracterizam por inovação, alta dinâmica dos negócios, muitos projetos em paralelo e nos quais soluções rígidas e engessadas não se aplicam.
 
+A [PmTech] (http://www.pmtech.com.br/canvas_PM.html) complementa dizendo que o PMC concentra-se no essencial, a alma do projeto e permite com que os stakeholders participem da concepção do plano. A aplicação desta metodologia é adequada a todos os tipos de projeto, não sendo focada em projetos de alguma área especifica.
 
 ## Soluções Propostas
 Após realizadas diversas etapas de levantamento de requisitos, estabelecimento de casos de usuário, análises de dados, reuniões de equipe, entre outros; chegamos a uma solução que torna o processo de configuração e utilização da planta menos custoso tanto para os alunos quanto para os professores. Para isso foi escolhido criar um desenho padrão da planta, que pode ser acessado e modificado posteriormente pelos usuários, utilizando o software Labview, dado que o Ifes possui a licença para este software. Além disso, foi criada uma função no MatLab que permite a importação de arquivos .xls, exportados do LabView para formato Excel, para o MatLab, possibilitando posterior processamento de dados neste software. Essa solução será melhor explicada nas próximas sessões.
