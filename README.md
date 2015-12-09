@@ -46,7 +46,7 @@ A [PmTech] (http://www.pmtech.com.br/canvas_PM.html) complementa dizendo que o P
 
 Em nosso projetos utilizamos o PMC para gerenciar nosso projeto, a versão final do nosso Project Model Canvas é demonstrado na figura abaixo.
 
-![PMC](https://github.com/LEDS/Lab303/blob/master/Imagens/PMC.jpg "PMC")
+![PMC](https://github.com/LEDS/Lab303/blob/master/Imagens/ProjectModelCanvas.jpg "PMC")
 
 ###Scrum
 No desenvolvimento do nosso projeto utilizamos a metodologia Scrum. Segundo o [desenvolvimentoagil.com] (http://www.desenvolvimentoagil.com.br/scrum/), Scrum é uma metodologia ágil para gestão e planejamento de projetos de software.
