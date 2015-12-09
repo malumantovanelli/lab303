@@ -34,16 +34,22 @@ ideias (LAUESEN, 2002).
 ####Design Centrado ao Ser Humano (HCD)
 
 
+## Soluções Propostas
+Após realizadas estas etapas citadas acima, chegamos a uma solução que tornaria o processo de configuração e utilização da planta menos custoso tanto para os alunos quanto para os professores. Para isso a solução ideal escolhida foi criar um desenho padrão da planta, que poderia ser acessada e modificada posteriormente por seus usuários, junto de um programa de conversão de arquivos, que transformaria a extensão do arquivo exportado do Labview para um formato que o Matlab pudesse importar e trabalhar com esses dados.
+
+O desenho foi desenvolvido utilizando o software Labview, dado que o Ifes Campus Serra (local onde o projeto está sendo aplicado) possui a licença para este software. E o programa de conversão foi desenvolvido na linguagem Python, e poderá ser acessado através de um arquivo executável que será disponibilizado nos laboratórios.
+
 ###Project Model Canvas
 Segundo o [site] (http://www.projectmodelcanvas.com/) do Project Model Canvas, o Project Model Canvas é uma metodologia robusta de gerenciamento de projetos, sem o preenchimento de inúmeros documentos e sem burocracia. É ideal para ambientes que querem aprimorar sua capacidade de planejamento mas que se caracterizam por inovação, alta dinâmica dos negócios, muitos projetos em paralelo e nos quais soluções rígidas e engessadas não se aplicam.
 
 A [PmTech] (http://www.pmtech.com.br/canvas_PM.html) complementa dizendo que o PMC concentra-se no essencial, a alma do projeto e permite com que os stakeholders participem da concepção do plano. A aplicação desta metodologia é adequada a todos os tipos de projeto, não sendo focada em projetos de alguma área especifica.
 
-## Soluções Propostas
-Após realizadas diversas etapas de levantamento de requisitos, estabelecimento de casos de usuário, análises de dados, reuniões de equipe, entre outros; chegamos a uma solução que torna o processo de configuração e utilização da planta menos custoso tanto para os alunos quanto para os professores. Para isso foi escolhido criar um desenho padrão da planta, que pode ser acessado e modificado posteriormente pelos usuários, utilizando o software Labview, dado que o Ifes possui a licença para este software. Além disso, foi criada uma função no MatLab que permite a importação de arquivos .xls, exportados do LabView para formato Excel, para o MatLab, possibilitando posterior processamento de dados neste software. Essa solução será melhor explicada nas próximas sessões.
+Em nosso projetos utilizamos o PMC para gerenciar nosso projeto, a versão final do nosso Project Model Canvas é demonstrado na figura abaixo.
 
-### Labview
+![PMC](https://github.com/LEDS/Lab303/blob/master/Imagens/PMC.jpg "PMC")
+
+##Scrum
 
 
-### MatLab
+
 
