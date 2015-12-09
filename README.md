@@ -34,7 +34,7 @@ ideias (LAUESEN, 2002).
 ####Design Centrado ao Ser Humano (HCD)
 
 
-## Soluções Propostas
+### Soluções Propostas
 Após realizadas estas etapas citadas acima, chegamos a uma solução que tornaria o processo de configuração e utilização da planta menos custoso tanto para os alunos quanto para os professores. Para isso a solução ideal escolhida foi criar um desenho padrão da planta, que poderia ser acessada e modificada posteriormente por seus usuários, junto de um programa de conversão de arquivos, que transformaria a extensão do arquivo exportado do Labview para um formato que o Matlab pudesse importar e trabalhar com esses dados.
 
 O desenho foi desenvolvido utilizando o software Labview, dado que o Ifes Campus Serra (local onde o projeto está sendo aplicado) possui a licença para este software. E o programa de conversão foi desenvolvido na linguagem Python, e poderá ser acessado através de um arquivo executável que será disponibilizado nos laboratórios.
@@ -48,7 +48,7 @@ Em nosso projetos utilizamos o PMC para gerenciar nosso projeto, a versão final
 
 ![PMC](https://github.com/LEDS/Lab303/blob/master/Imagens/PMC.jpg "PMC")
 
-##Scrum
+###Scrum
 
 
 
