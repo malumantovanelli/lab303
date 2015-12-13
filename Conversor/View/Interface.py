@@ -76,6 +76,7 @@ class AplicativoConversor(QtGui.QMainWindow):
         ## CRIANDO OS BOTOES
         self.LbSelectArq = QtGui.QLabel("Selecione o arquivo que quer converter:", self.centralWidget)
         self.LEditArqOrig = QtGui.QLineEdit(self.centralWidget)
+        self.LEditArqOrig.setReadOnly(True)
         self.btn_browser1 = QtGui.QPushButton("Browser...", self.centralWidget)
         self.btn_browser1.clicked.connect(self.pegaArqOrigem)
         icon = QtGui.QIcon()
@@ -97,6 +98,7 @@ class AplicativoConversor(QtGui.QMainWindow):
         ## CRIANDO OS BOTOES
         self.LbArqDes = QtGui.QLabel("Selecione onde quer salvar o novo arquivo:", self.centralWidget)
         self.LEditArqDes = QtGui.QLineEdit(self.centralWidget)
+        self.LEditArqOrig.setReadOnly(True)
         self.BtnBrowser2 = QtGui.QPushButton("Browser...", self.centralWidget)
         self.BtnBrowser2.clicked.connect(self.pegaArqDestino)
         icon = QtGui.QIcon()
@@ -162,7 +164,8 @@ class AplicativoConversor(QtGui.QMainWindow):
             self.CxTexto.moveCursor(QtGui.QTextCursor.End)
             self.dadosArquivo = []
             self.controlador = [0, 0, 0]
-            Conversor.starThreadConversora(self.dadosArquivo, self.nome_arquivoOrigem, self.controlador)
+            Conversor.starThreadConversora(self.dadosArquivo, self.nome_arquivoOrigem, self.controlador, self)
+            print("casas")
             self.creatProgressBar()
             self.progressBar.setValue(self.step)
             self.doAction()
@@ -198,6 +201,7 @@ class AplicativoConversor(QtGui.QMainWindow):
         reply = QtGui.QMessageBox.information(self, 'Aviso', "Por favor insira o arquivo xlsx pra conversão", QtGui.QMessageBox.Ok)
         self.nome_arquivoOrigem = QtGui.QFileDialog.getOpenFileName(self, "Selecionar o arquivo xlsx", filter="All(*.xlsx)")
         self.LEditArqOrig.setText(self.nome_arquivoOrigem)
+        self.LEditArqOrig.setModified(False)
 
     def pegaArqDestino(self):
         reply = QtGui.QMessageBox.information(self,'Aviso',"Selecione a pasta para salvar o arquivo", QtGui.QMessageBox.Ok)
