@@ -40,5 +40,4 @@ class Converte(object):
                 lstDadosArquivo.append(bufferDados)
                 bufferDados = []
         except:
-            #reply = QtGui.QMessageBox.information(objInterface, 'Aviso', "O arquivo não existe mais", QtGui.QMessageBox.Ok)
-            print("OI deu merda")
+            print("Não achei")

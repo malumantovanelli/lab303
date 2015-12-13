@@ -28,4 +28,4 @@ class GravaArquivo(object):
 
             arquivo.close()
         except:
-            print("Filho da puta")
+            print("Não achei")

@@ -162,7 +162,7 @@ class AplicativoConversor(QtGui.QMainWindow):
             self.CxTexto.moveCursor(QtGui.QTextCursor.End)
             self.dadosArquivo = []
             self.controlador = [0, 0, 0]
-            Conversor.starThreadConversora(self.dadosArquivo, self.nome_arquivoOrigem, self.controlador, self)
+            Conversor.starThreadConversora(self.dadosArquivo, self.nome_arquivoOrigem, self.controlador)
             self.creatProgressBar()
             self.progressBar.setValue(self.step)
             self.doAction()
