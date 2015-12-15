@@ -12,6 +12,7 @@ from PyQt4 import QtCore, QtGui
 from Controle.Conversor import Conversor
 from time import strftime
 
+
 class AplicativoConversor(QtGui.QMainWindow):
     def __init__(self):
         super(AplicativoConversor, self).__init__()
@@ -19,11 +20,11 @@ class AplicativoConversor(QtGui.QMainWindow):
 
     def setupUi(self):
         # SETANDO O TAMANHO MAXIMO
-        self.resize(675, 350)
-        self.setMinimumSize(675, 350)
-        self.setMaximumSize(675, 350)
-        self.setWindowTitle("LEDS Conversor")
-        self.setWindowIcon(QtGui.QIcon("View\\Imagens\\icone.png"))
+        self.resize(675, 365)
+        self.setMinimumSize(675, 365)
+        self.setMaximumSize(675, 365)
+        self.setWindowTitle("Xlsx 2 Txt")
+        self.setWindowIcon(QtGui.QIcon("View\\Imagens\\icone.ico"))
 
         # Widget principal
         self.centralWidget = QtGui.QWidget(self)
@@ -52,7 +53,6 @@ class AplicativoConversor(QtGui.QMainWindow):
         self.LayoutWidget.addLayout(self.LayoutBtnConversao)
 
         self.criaMenu()
-        self.criaToolBar()
         self.criaStatus()
 
         self.LayoutPrincipal.addLayout(self.LayoutWidget)
@@ -61,7 +61,7 @@ class AplicativoConversor(QtGui.QMainWindow):
 
     def criaLayoutImagem(self):
         self.LBImagem = QtGui.QLabel()
-        self.LBImagem.setPixmap(QtGui.QPixmap(("View\\Imagens\\Title.png")))
+        self.LBImagem.setPixmap(QtGui.QPixmap(("View\\Imagens\\title.png")))
         self.LBImagem.setAlignment(QtCore.Qt.AlignCenter)
         self.LayoutImagem = QtGui.QVBoxLayout()
         self.LayoutImagem.addWidget(self.LBImagem)
@@ -98,7 +98,7 @@ class AplicativoConversor(QtGui.QMainWindow):
         ## CRIANDO OS BOTOES
         self.LbArqDes = QtGui.QLabel("Selecione onde quer salvar o novo arquivo:", self.centralWidget)
         self.LEditArqDes = QtGui.QLineEdit(self.centralWidget)
-        self.LEditArqOrig.setReadOnly(True)
+        self.LEditArqDes.setReadOnly(True)
         self.BtnBrowser2 = QtGui.QPushButton("Browser...", self.centralWidget)
         self.BtnBrowser2.clicked.connect(self.pegaArqDestino)
         icon = QtGui.QIcon()
@@ -118,7 +118,11 @@ class AplicativoConversor(QtGui.QMainWindow):
 
         # BOTOES DO LAYOUT QUE MOSTRA O STATUS DA CONVERSAO
         ## CRIANDO OS BOTOES
-        self.CxTexto = QtGui.QTextBrowser(self.centralWidget)
+        self.CxTexto = QtGui.QTextEdit(self.centralWidget)
+        self.CxTexto.setReadOnly(True)
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.CxTexto.setFont(font)
 
         ## ADICIONANDO OS BOTOES DO LAYOUT QUE MOSTRA O STATUS DA CONVERSAO
         self.LayoutConversao.addWidget(self.CxTexto)
@@ -151,31 +155,31 @@ class AplicativoConversor(QtGui.QMainWindow):
         self.LayoutBtnConversao.addWidget(self.BtnSair)
 
     def creatProgressBar(self):
-        self.progressBar = QtGui.QProgressBar(self)
+        if (self.LayoutConversao.count() == 2):
+            self.progressBar.close()
+            self.LayoutConversao.removeWidget(self.progressBar)
+        self.progressBar = QtGui.QProgressBar()
         self.LayoutConversao.addWidget(self.progressBar)
         self.timer = QtCore.QBasicTimer()
         self.step = 0
-        self.inicio = 0
 
     def startConversor(self):
         if self.LEditArqOrig.text() != '' and self.LEditArqDes.text() != '':
             self.BtnConverter.setEnabled(False)
+            self.CxTexto.clear()
             self.CxTexto.insertPlainText(strftime('[%H:%M:%S]') + " Convertendo arquivo...\n")
             self.CxTexto.moveCursor(QtGui.QTextCursor.End)
             self.dadosArquivo = []
             self.controlador = [0, 0, 0]
-            Conversor.starThreadConversora(self.dadosArquivo, self.nome_arquivoOrigem, self.controlador, self)
-            print("casas")
-            self.creatProgressBar()
-            self.progressBar.setValue(self.step)
-            self.doAction()
+            self.abreArquivoXlsx()
         else:
             reply = QtGui.QMessageBox.critical(self, 'Aviso', "Insira arquivos válidos", QtGui.QMessageBox.Ok)
 
     def timerEvent(self, e):
         if self.step >= 100:
             self.timer.stop()
-            self.CxTexto.insertPlainText(strftime('[%H:%M:%S]') + " Arquivo salvo com sucesso\n")
+            self.CxTexto.insertPlainText(strftime('[%H:%M:%S]') + " Arquivo salvo com sucesso!!!\n")
+            self.BtnConverter.setEnabled(True)
 
         if self.dadosArquivo != [] and self.step < 50:
             self.tamanho = self.dadosArquivo[0] * self.controlador[1]
@@ -189,7 +193,7 @@ class AplicativoConversor(QtGui.QMainWindow):
                 self.progressBar.setValue(self.step)
 
         if self.step == 50:
-            self.CxTexto.insertPlainText(strftime('[%H:%M:%S]') + " Conversão concluida com sucesso...\n")
+            self.CxTexto.insertPlainText(strftime('[%H:%M:%S]') + " Conversão concluida com sucesso!!!\n")
             self.CxTexto.insertPlainText(strftime('[%H:%M:%S]') + " Salvando arquivo...\n")
             Conversor.starThreadGravadora(self.nome_arquivoDestino, self.dadosArquivo, self.controlador)
 
@@ -201,21 +205,33 @@ class AplicativoConversor(QtGui.QMainWindow):
         reply = QtGui.QMessageBox.information(self, 'Aviso', "Por favor insira o arquivo xlsx pra conversão", QtGui.QMessageBox.Ok)
         self.nome_arquivoOrigem = QtGui.QFileDialog.getOpenFileName(self, "Selecionar o arquivo xlsx", filter="All(*.xlsx)")
         self.LEditArqOrig.setText(self.nome_arquivoOrigem)
-        self.LEditArqOrig.setModified(False)
 
     def pegaArqDestino(self):
         reply = QtGui.QMessageBox.information(self,'Aviso',"Selecione a pasta para salvar o arquivo", QtGui.QMessageBox.Ok)
         self.nome_arquivoDestino = QtGui.QFileDialog.getSaveFileName(self, "Selecionar o local para salvar o arquivo", filter="All(*.txt)")  ##Abre um arquivo
         self.LEditArqDes.setText(self.nome_arquivoDestino)
 
+    def abreArquivoXlsx(self):
+        try:
+            arquivoXlsx = open(self.nome_arquivoOrigem, "rt")
+            arquivoXlsx.close()
+            Conversor.starThreadConversora(self.dadosArquivo, self.nome_arquivoOrigem, self.controlador)
+            self.creatProgressBar()
+            self.progressBar.setValue(self.step)
+            self.doAction()
+        except:
+            if (self.LayoutConversao.count() == 2):
+                self.progressBar.close()
+                self.LayoutConversao.removeWidget(self.progressBar)
+            self.CxTexto.setTextColor(QtGui.QColor("red"))
+            self.CxTexto.insertPlainText(strftime('[%H:%M:%S]') + " ERRO: ARQUIVO NÃO EXISTENTE\n")
+            self.BtnConverter.setEnabled(True)
+            self.CxTexto.setTextColor(QtGui.QColor("black"))
+
     def criaMenu(self):
         self.menuBar = QtGui.QMenuBar(self)
         self.menuBar.setGeometry(QtCore.QRect(0, 0, 827, 21))
         self.setMenuBar(self.menuBar)
-
-    def criaToolBar(self):
-        self.mainToolBar = QtGui.QToolBar(self)
-        self.addToolBar(QtCore.Qt.TopToolBarArea, self.mainToolBar)
 
     def criaStatus(self):
         self.statusBar = QtGui.QStatusBar(self)

@@ -12,20 +12,21 @@ class GravaArquivo(object):
 
     @staticmethod
     def startGravacao(diretorioArqDestino, lstDados, controlador):
-        try:
+        BufferString = ''
+        qtnCasaDecimais = 8
+        arquivo = open(diretorioArqDestino, "w")
+
+        del(lstDados[0])
+
+        for lstLinhas in lstDados:
+            for conteudoColuna in lstLinhas:
+                qtnZeros = qtnCasaDecimais - len(conteudoColuna)
+                conteudoColunaMenor = str(conteudoColuna) + (("0")*qtnZeros)
+                conteudoColunaMenor = conteudoColunaMenor[:6]
+                BufferString += conteudoColunaMenor + ("\t")
+                controlador[2]+=1
+            BufferString += "\n"
+            arquivo.write(BufferString)
             BufferString = ''
-            arquivo = open(diretorioArqDestino, "w")
 
-            del(lstDados[0])
-
-            for lstLinhas in lstDados:
-                for conteudoColuna in lstLinhas:
-                    BufferString += str(conteudoColuna) + "/t"
-                    controlador[2]+=1
-                BufferString += "\n"
-                arquivo.write(BufferString)
-                BufferString = ''
-
-            arquivo.close()
-        except:
-            print("Filho da puta")
+        arquivo.close()

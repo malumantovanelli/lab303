@@ -12,12 +12,11 @@ import threading
 
 
 class ThConversor(threading.Thread):
-    def __init__ (self, dadosArquivo, diretorioArqOrigem, controlador, obj):
+    def __init__ (self, dadosArquivo, diretorioArqOrigem, controlador):
         super(ThConversor, self).__init__()
         self.dados = dadosArquivo
         self.origem = diretorioArqOrigem
         self.controlador = controlador
-        self.objj = obj
 
     def run(self):
-        Converte.startConversao(self.origem, self.dados, self.controlador, self.objj)
+        Converte.startConversao(self.origem, self.dados, self.controlador)

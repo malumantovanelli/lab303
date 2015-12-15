@@ -14,31 +14,27 @@ import pandas
 class Converte(object):
 
     @staticmethod
-    def startConversao(diretorioArqOrigem, lstDadosArquivo, controlador, objInterface):
+    def startConversao(diretorioArqOrigem, lstDadosArquivo, controlador):
 
-        try:
-            arquivoXlsx = pandas.ExcelFile(diretorioArqOrigem)
+        arquivoXlsx = pandas.ExcelFile(diretorioArqOrigem)
 
-            colunaUm = pandas.ExcelFile.parse(arquivoXlsx, "sheet1")
+        colunaUm = pandas.ExcelFile.parse(arquivoXlsx, arquivoXlsx.sheet_names[0])
 
-            lstNomesColuna = []
+        lstNomesColuna = []
 
-            for coluna in (colunaUm.columns):
-                lstNomesColuna.append(coluna)
+        for coluna in (colunaUm.columns):
+            lstNomesColuna.append(coluna)
 
-            tamanhoColuna = colunaUm[lstNomesColuna[0]].size
-            controlador[1] = len(lstNomesColuna)
+        tamanhoColuna = colunaUm[lstNomesColuna[0]].size
+        controlador[1] = len(lstNomesColuna)
 
-            lstDadosArquivo.append(tamanhoColuna)
+        lstDadosArquivo.append(tamanhoColuna)
 
+        bufferDados = []
+        for numLinha in range(tamanhoColuna):
+            for coluna in (lstNomesColuna):
+                row = colunaUm[coluna].iloc[numLinha]
+                bufferDados.append(str(row))
+                controlador[0] += 1
+            lstDadosArquivo.append(bufferDados)
             bufferDados = []
-            for numLinha in range(tamanhoColuna):
-                for coluna in (lstNomesColuna):
-                    row = colunaUm[coluna].iloc[numLinha]
-                    bufferDados.append(str(row))
-                    controlador[0] += 1
-                lstDadosArquivo.append(bufferDados)
-                bufferDados = []
-        except:
-            #reply = QtGui.QMessageBox.information(objInterface, 'Aviso', "O arquivo não existe mais", QtGui.QMessageBox.Ok)
-            print("OI deu merda")

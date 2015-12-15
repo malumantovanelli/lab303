@@ -16,8 +16,8 @@ from Util.ThreadGravadora import ThreadGravar
 class Conversor(object):
 
     @staticmethod
-    def starThreadConversora(dadosArquivo, diretorioArqOrigem, controlador, obj):
-        thread = ThConversor(dadosArquivo, diretorioArqOrigem, controlador, obj)
+    def starThreadConversora(dadosArquivo, diretorioArqOrigem, controlador):
+        thread = ThConversor(dadosArquivo, diretorioArqOrigem, controlador)
         thread.start()
 
     @staticmethod

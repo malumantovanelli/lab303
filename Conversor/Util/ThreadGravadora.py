@@ -13,11 +13,11 @@ import threading
 
 
 class ThreadGravar(threading.Thread):
-    def __init__ (self,  diretorioArqDestino, lst_dados, obj):
+    def __init__ (self,  diretorioArqDestino, lst_dados, controlador):
         super(ThreadGravar, self).__init__()
         self.dados = lst_dados
         self.diretorioDestino = diretorioArqDestino
-        self._objeto = obj
+        self.controlador = controlador
 
     def run(self):
-        GravaArquivo.startGravacao(self.diretorioDestino, self.dados, self._objeto)
+        GravaArquivo.startGravacao(self.diretorioDestino, self.dados, self.controlador)
